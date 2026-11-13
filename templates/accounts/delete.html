@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% trans "Delete my account" %}{% endblock %}
+{% block content %}
+<div class="card narrow"><h1>{% trans "Delete my account" %}</h1>
+<div class="msg error">{% trans "This cancels your subscription and permanently erases your account. Your published entries stay available but are no longer linked to you. This cannot be undone." %}</div>
+<form method="post" class="form">{% csrf_token %}{{ form.as_div }}
+  <div class="actions"><button class="btn-danger">{% trans "Delete permanently" %}</button><a href="{% url 'accounts:account' %}">{% trans "Cancel" %}</a></div>
+</form></div>
+{% endblock %}

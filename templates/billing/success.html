@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% load i18n %}
+{% block content %}
+<div class="card"><h1>{% trans "Thank you!" %}</h1>
+<p>{% trans "Your payment is being confirmed. Access is activated within a few seconds; refresh this page if needed." %}</p>
+{% if user.has_access %}<a class="btn" href="{% url 'catalog:home' %}">{% trans "Go to the library" %}</a>{% endif %}</div>
+{% endblock %}

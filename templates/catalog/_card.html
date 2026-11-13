@@ -1,0 +1,16 @@
+{% load i18n ui humanize %}<article class="card entry-card">
+  <div class="chips">
+    <span class="chip cat cat-{{ e.category }}">{% category_icon e.category %} {{ e.get_category_display }}</span>
+    {% if e.stage %}<span class="chip">{{ e.get_stage_display }}</span>{% endif %}
+    {% if e.power_gain %}<span class="chip gain">+{{ e.power_gain }} {% trans "hp" %}</span>{% endif %}
+    {% if show_status and e.status != "pub" %}<span class="chip warn">{{ e.get_status_display }}</span>{% endif %}
+  </div>
+  <h3><a href="{{ e.get_absolute_url }}">{{ e.title }}</a></h3>
+  <div class="car">{{ e.car_model }}{% if e.engine %} · {{ e.engine }}{% endif %}</div>
+  <div class="meta">
+    <span title="{% trans 'Helpful votes' %}">{% icon "thumb" %} {{ e.vote_count|default:0 }}</span>
+    <span title="{% trans 'Comments' %}">{% icon "comment" %} {{ e.comment_count|default:0 }}</span>
+    <span>{{ e.get_language_display }}</span>
+    <span>{{ e.created_at|naturaltime }}</span>
+  </div>
+</article>

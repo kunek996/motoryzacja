@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% trans "Terms of Service" %}{% endblock %}
+{% block content %}
+<h1>{% trans "Terms of Service" %}</h1>
+<div class="msg error">{% trans "TEMPLATE: this text is a placeholder and must be replaced with terms prepared by a lawyer before launch." %}</div>
+<ol>
+  <li>{% trans "Access to the service requires a paid subscription ($5 per month, billed monthly, cancellable at any time in the customer portal)." %}</li>
+  <li>{% trans "Users are responsible for the content they publish and confirm they have the right to share it." %}</li>
+  <li>{% trans "Content intended to defeat emission-control systems (DPF, EGR, AdBlue/SCR, catalytic converters) or for road use contrary to local law is prohibited." %}</li>
+  <li>{% trans "Modifications are made at your own risk. Information is provided as is, without any warranty." %}</li>
+  <li>{% trans "We may remove content and suspend accounts that violate these terms." %}</li>
+</ol>
+{% endblock %}

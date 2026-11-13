@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% trans "Privacy Policy" %}{% endblock %}
+{% block content %}
+<h1>{% trans "Privacy Policy" %}</h1>
+<div class="msg error">{% trans "TEMPLATE: this text is a placeholder and must be replaced with a policy prepared by a lawyer (controller identity, legal bases, retention, processors) before launch." %}</div>
+<ul>
+  <li>{% trans "We collect only: email, nickname, language, consent records and your content." %}</li>
+  <li>{% trans "Payments are processed by Stripe; we never see or store your card number." %}</li>
+  <li>{% trans "We use only essential cookies (session, security, language). No advertising or analytics trackers." %}</li>
+  <li>{% trans "You can download all your data or delete your account at any time in your account settings." %}</li>
+</ul>
+{% endblock %}

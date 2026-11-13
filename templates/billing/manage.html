@@ -1,0 +1,24 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% trans "Subscription" %}{% endblock %}
+{% block content %}
+<div class="card narrow"><h1>{% trans "Subscription" %}</h1>
+{% with sub=user.subscription %}
+  {% if sub %}
+    <dl class="specs">
+      <dt>{% trans "Status" %}</dt><dd><b>{% if sub.is_active %}{% trans "Active" %}{% else %}{{ sub.status }}{% endif %}</b></dd>
+      {% if sub.current_period_end %}<dt>{% if sub.cancel_at_period_end %}{% trans "Access until" %}{% else %}{% trans "Renews on" %}{% endif %}</dt><dd>{{ sub.current_period_end|date:"DATE_FORMAT" }}</dd>{% endif %}
+    </dl>
+    {% if sub.cancel_at_period_end %}<p class="msg warning" style="margin-top:1rem">{% trans "Cancellation scheduled at period end." %}</p>{% endif %}
+    <div class="actions" style="margin-top:1rem">
+      {% if dev_mode %}
+        <form method="post" action="{% url 'billing:dev_cancel' %}">{% csrf_token %}<button class="btn-ghost">{% trans "Cancel test subscription" %}</button></form>
+      {% else %}
+        <form method="post" action="{% url 'billing:portal' %}">{% csrf_token %}<button>{% trans "Billing portal (card, invoices, cancel)" %}</button></form>
+      {% endif %}
+      {% if not sub.is_active %}<a class="btn" href="{% url 'billing:pricing' %}">{% trans "Subscribe" %}</a>{% endif %}
+    </div>
+  {% else %}
+    <p>{% trans "No subscription." %}</p><a class="btn" href="{% url 'billing:pricing' %}">{% trans "Subscribe" %}</a>
+  {% endif %}
+{% endwith %}</div>
+{% endblock %}

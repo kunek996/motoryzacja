@@ -1,0 +1,59 @@
+{% extends "base.html" %}{% load i18n ui %}
+{% block title %}{% trans "Tuning community: maps, settings, modifications" %}{% endblock %}
+{% block content %}
+<section class="hero">
+  <span class="eyebrow">{% trans "For tuners, by tuners" %}</span>
+  <h1>{% trans "The community for car tuners" %}</h1>
+  <p class="lead">{% trans "Share and find modifications, engine and gearbox maps, and turbo settings for every make." %}</p>
+  <div class="actions">
+    {% if user.is_authenticated and user.has_access %}
+      <a class="btn btn-lg" href="{% url 'catalog:home' %}">{% icon "search" %} {% trans "Browse the library" %}</a>
+      <a class="btn btn-lg btn-ghost" href="{% url 'catalog:create' %}">{% trans "Share your setup" %}</a>
+    {% else %}
+      <a class="btn btn-lg" href="{% url 'billing:pricing' %}">{% blocktrans %}Get access: $5 / month{% endblocktrans %}</a>
+      <a class="btn btn-lg btn-ghost" href="{% url 'catalog:home' %}">{% trans "Browse the library" %}</a>
+    {% endif %}
+  </div>
+  <div class="stats">
+    <div class="stat"><b>{{ stats.entries }}</b><span>{% trans "entries" %}</span></div>
+    <div class="stat"><b>{{ stats.makes }}</b><span>{% trans "makes" %}</span></div>
+    <div class="stat"><b>{{ stats.members }}</b><span>{% trans "members" %}</span></div>
+  </div>
+</section>
+
+<div class="tiles">
+  <a class="tile" href="{% url 'catalog:home' %}?category=ecu"><div class="ico bg-ecu">{% icon "gauge" %}</div><b>{% trans "Engine maps (ECU)" %}</b><span>{% trans "Boost, ignition and fuel tables with before/after numbers." %}</span></a>
+  <a class="tile" href="{% url 'catalog:home' %}?category=tcu"><div class="ico bg-tcu">{% icon "gear" %}</div><b>{% trans "Gearbox maps (TCU)" %}</b><span>{% trans "Torque limits, shift points and clutch pressures." %}</span></a>
+  <a class="tile" href="{% url 'catalog:home' %}?category=turbo"><div class="ico bg-turbo">{% icon "turbo" %}</div><b>{% trans "Turbo settings" %}</b><span>{% trans "Boost curves, wastegate and turbo upgrades." %}</span></a>
+  <a class="tile" href="{% url 'catalog:home' %}?category=mod"><div class="ico bg-mod">{% icon "wrench" %}</div><b>{% trans "Modifications" %}</b><span>{% trans "Hardware, maintenance and measured results." %}</span></a>
+</div>
+
+{% if top_makes %}
+<h2>{% trans "Popular makes" %}</h2>
+<div class="make-pills">
+  {% for m in top_makes %}<a href="{% url 'catalog:home' %}?make={{ m.pk }}">{{ m.name }}<small>{{ m.n }}</small></a>{% endfor %}
+  <a href="{% url 'catalog:makes' %}">{% trans "All makes" %} →</a>
+</div>
+{% endif %}
+
+<h2>{% trans "Latest entries" %}</h2>
+<div class="grid">
+  {% for e in latest %}{% include "catalog/_card.html" %}
+  {% empty %}<p class="muted">{% trans "No entries yet." %}</p>{% endfor %}
+</div>
+
+<h2>{% trans "How it works" %}</h2>
+<div class="steps">
+  <div class="card"><h3>{% trans "Create an account" %}</h3><p class="muted">{% trans "Confirm your email – we only store what is necessary." %}</p></div>
+  <div class="card"><h3>{% trans "Subscribe for $5 / month" %}</h3><p class="muted">{% trans "Secure payment by Stripe. Cancel any time in one click." %}</p></div>
+  <div class="card"><h3>{% trans "Share and learn" %}</h3><p class="muted">{% trans "Download maps, compare settings and vote for the most helpful entries." %}</p></div>
+</div>
+
+{% if not user.has_access %}
+<section class="cta-band">
+  <h2>{% trans "Ready to unlock every map and setting?" %}</h2>
+  <p>{% trans "Full access to the library, attachments and the community." %}</p>
+  <a class="btn btn-lg" href="{% url 'billing:pricing' %}">{% blocktrans %}Get access: $5 / month{% endblocktrans %}</a>
+</section>
+{% endif %}
+{% endblock %}

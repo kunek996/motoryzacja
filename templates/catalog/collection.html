@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{{ heading }}{% endblock %}
+{% block content %}
+<div class="results-head">
+  <h1 style="margin:0">{{ heading }}</h1>
+  <a class="btn" href="{% url 'catalog:create' %}">{% trans "Add entry" %}</a>
+</div>
+<div class="grid">
+  {% for e in page %}{% include "catalog/_card.html" %}{% empty %}
+    <div class="card empty" style="grid-column:1/-1"><p>{% trans "Nothing here yet." %}</p><a href="{% url 'catalog:home' %}">{% trans "Browse the library" %}</a></div>
+  {% endfor %}
+</div>
+{% include "_pagination.html" %}
+{% endblock %}

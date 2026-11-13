@@ -1,0 +1,141 @@
+{% extends "base.html" %}{% load i18n ui humanize %}
+{% block title %}{{ entry.title }} – {{ entry.car_model }}{% endblock %}
+{% block description %}{{ entry.get_category_display }}: {{ entry.car_model }}{% if entry.engine %}, {{ entry.engine }}{% endif %}{% if entry.power_after_hp %}, {{ entry.power_after_hp }} hp{% endif %}.{% endblock %}
+{% block og_title %}{{ entry.title }}{% endblock %}
+{% block head %}{{ ld|ld_json }}{% endblock %}
+{% block content %}
+<div class="entry-head">
+  <div style="flex:1;min-width:260px">
+    <div class="chips">
+      <span class="chip cat cat-{{ entry.category }}">{% category_icon entry.category %} {{ entry.get_category_display }}</span>
+      {% if entry.stage %}<span class="chip">{{ entry.get_stage_display }}</span>{% endif %}
+      {% if entry.fuel %}<span class="chip">{{ entry.get_fuel_display }}</span>{% endif %}
+      <span class="chip">{% icon "globe" %} {{ entry.get_language_display }}</span>
+      {% if entry.status != "pub" %}<span class="chip warn">{{ entry.get_status_display }}</span>{% endif %}
+    </div>
+    <h1>{{ entry.title }}</h1>
+    <div class="byline">
+      <a href="{% url 'catalog:home' %}?car_model={{ entry.car_model_id }}&amp;make={{ entry.car_model.make_id }}"><b>{{ entry.car_model }}</b></a>
+      {% if entry.car_model.years %}<span>({{ entry.car_model.years }})</span>{% endif %}
+      <span>·</span>
+      {% if entry.author %}<span class="avatar">{{ entry.author.display_name|initial }}</span><a href="{{ entry.author.get_absolute_url }}">{{ entry.author.display_name }}</a>
+      {% else %}<span>{% trans "deleted user" %}</span>{% endif %}
+      <span>·</span><time datetime="{{ entry.created_at|date:'c' }}" title="{{ entry.created_at }}">{{ entry.created_at|naturaltime }}</time>
+    </div>
+  </div>
+  {% if has_access %}
+  <div class="toolbar">
+    <form method="post" action="{% url 'catalog:vote' entry.pk %}">{% csrf_token %}
+      <button class="btn-ghost{% if voted %} on{% endif %}" {% if entry.author_id == user.pk %}disabled title="{% trans 'You cannot vote for your own entry.' %}"{% endif %} aria-pressed="{{ voted|yesno:'true,false' }}">{% icon "thumb" %} {% trans "Helpful" %} · {{ vote_count }}</button>
+    </form>
+    <form method="post" action="{% url 'catalog:bookmark' entry.pk %}">{% csrf_token %}
+      <button class="btn-ghost{% if bookmarked %} on{% endif %}" aria-pressed="{{ bookmarked|yesno:'true,false' }}">{% icon "bookmark" %} {% if bookmarked %}{% trans "Saved" %}{% else %}{% trans "Save" %}{% endif %}</button>
+    </form>
+    {% if can_edit %}
+      <a class="btn btn-ghost" href="{% url 'catalog:edit' entry.pk %}">{% icon "edit" %} {% trans "Edit" %}</a>
+      <a class="btn btn-ghost" href="{% url 'catalog:delete' entry.pk %}">{% icon "trash" %} {% trans "Delete" %}</a>
+    {% endif %}
+  </div>
+  {% else %}
+  <div class="toolbar"><span class="btn btn-ghost" aria-label="{% trans 'Helpful votes' %}">{% icon "thumb" %} {{ vote_count }}</span></div>
+  {% endif %}
+</div>
+
+<div class="entry-layout">
+  <div>
+    {% if entry.power_after_hp or entry.torque_after_nm %}
+    <div class="card perf">
+      {% if entry.power_after_hp %}<div class="box"><small>{% trans "Power" %}</small><b>{{ entry.power_before_hp|default:"?" }} → {{ entry.power_after_hp }} {% trans "hp" %}</b>{% if entry.power_gain %}<div class="gain">+{{ entry.power_gain }} {% trans "hp" %}</div>{% endif %}</div>{% endif %}
+      {% if entry.torque_after_nm %}<div class="box"><small>{% trans "Torque" %}</small><b>{{ entry.torque_before_nm|default:"?" }} → {{ entry.torque_after_nm }} Nm</b>{% if entry.torque_gain %}<div class="gain">+{{ entry.torque_gain }} Nm</div>{% endif %}</div>{% endif %}
+      {% if entry.boost_bar %}<div class="box"><small>{% trans "Peak boost" %}</small><b>{{ entry.boost_bar }} bar</b></div>{% endif %}
+    </div>
+    {% endif %}
+
+    {% if has_access %}
+      <div class="card"><h2>{% trans "Description" %}</h2><div class="body-text">{{ entry.body }}</div></div>
+
+      {% if parameters %}
+      <div class="card"><h2>{% trans "Settings & parameters" %}</h2>
+        <table><thead><tr><th>{% trans "Parameter" %}</th><th>{% trans "Value" %}</th></tr></thead><tbody>
+          {% for p in parameters %}<tr><td>{{ p.name }}</td><td class="num">{{ p.value }} {{ p.unit }}</td></tr>{% endfor %}
+        </tbody></table>
+      </div>
+      {% endif %}
+
+      {% if attachments %}
+      <div class="card files"><h2>{% trans "Attachments" %}</h2><ul>
+        {% for a in attachments %}<li><a href="{% url 'catalog:download' a.pk %}">{% icon "download" %} {{ a.original_name }}</a><span class="muted small">{{ a.size|filesizeformat }} · {% blocktrans count counter=a.download_count %}{{ counter }} download{% plural %}{{ counter }} downloads{% endblocktrans %}</span></li>{% endfor %}
+      </ul><p class="muted small" style="margin-top:.6rem">{% icon "shield" %} {% trans "Files are shared by members. Always verify maps (checksums, logs) before flashing – at your own risk." %}</p></div>
+      {% endif %}
+
+      <div class="card" id="comments"><h2>{% trans "Comments" %} <span class="muted">({{ comments|length }})</span></h2>
+        {% for c in comments %}
+        <div class="comment">
+          <span class="avatar">{{ c.author.display_name|default:"?"|initial }}</span>
+          <div style="flex:1">
+            <div>{% if c.author %}<a class="who" href="{{ c.author.get_absolute_url }}">{{ c.author.display_name }}</a>{% else %}<span class="who">{% trans "deleted user" %}</span>{% endif %}
+              <span class="when">· {{ c.created_at|naturaltime }}</span>
+              {% if user.is_staff or c.author_id == user.pk %}
+              <form method="post" action="{% url 'catalog:comment_delete' c.pk %}" class="inline" data-confirm="{% trans 'Delete this comment?' %}">{% csrf_token %}<button class="linkbtn small muted" title="{% trans 'Delete' %}">{% icon "trash" %}</button></form>
+              {% endif %}
+            </div>
+            <div class="body-text">{{ c.body }}</div>
+          </div>
+        </div>
+        {% empty %}<p class="muted">{% trans "No comments yet. Ask a question or share your results." %}</p>{% endfor %}
+        <form method="post" action="{% url 'catalog:comment' entry.pk %}" class="form" style="margin-top:1rem">{% csrf_token %}
+          {{ comment_form.as_div }}<button>{% trans "Add comment" %}</button>
+        </form>
+      </div>
+    {% else %}
+      <div class="card paywall">
+        <div class="ghost" aria-hidden="true">
+          <h2>{% trans "Description" %}</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+          <table><tr><td>▇▇▇▇▇▇ ▇▇▇▇</td><td>▇.▇▇</td></tr><tr><td>▇▇▇▇▇ ▇▇▇▇▇▇</td><td>▇▇▇</td></tr><tr><td>▇▇▇▇▇▇</td><td>▇.▇</td></tr></table>
+        </div>
+        <div class="lock"><div>
+          <p>{% icon "lock" %}</p>
+          <h3>{% trans "This entry is available to subscribers" %}</h3>
+          <p class="muted">{% blocktrans with p=parameter_count a=attachment_count c=comment_count %}Full description, {{ p }} parameters, {{ a }} attachments and {{ c }} comments.{% endblocktrans %}</p>
+          {% if user.is_authenticated %}
+            <a class="btn" href="{% url 'billing:pricing' %}">{% blocktrans %}Get access: $5 / month{% endblocktrans %}</a>
+          {% else %}
+            <div class="actions" style="justify-content:center">
+              <a class="btn" href="{% url 'accounts:signup' %}">{% trans "Sign up" %}</a>
+              <a class="btn btn-ghost" href="{% url 'accounts:login' %}?next={{ request.path|urlencode }}">{% trans "Log in" %}</a>
+            </div>
+          {% endif %}
+        </div></div>
+      </div>
+    {% endif %}
+  </div>
+
+  <aside>
+    <div class="card"><h3>{% trans "Specification" %}</h3>
+      <dl class="specs">
+        <dt>{% trans "Car" %}</dt><dd>{{ entry.car_model }}</dd>
+        {% if entry.model_year %}<dt>{% trans "Model year" %}</dt><dd>{{ entry.model_year }}</dd>{% endif %}
+        {% if entry.engine %}<dt>{% trans "Engine" %}</dt><dd>{{ entry.engine }}</dd>{% endif %}
+        {% if entry.fuel %}<dt>{% trans "Fuel" %}</dt><dd>{{ entry.get_fuel_display }}</dd>{% endif %}
+        {% if entry.ecu_type %}<dt>{% trans "ECU" %}</dt><dd>{{ entry.ecu_type }}</dd>{% endif %}
+        {% if entry.gearbox %}<dt>{% trans "Gearbox" %}</dt><dd>{{ entry.gearbox }}</dd>{% endif %}
+        {% if entry.turbo %}<dt>{% trans "Turbo" %}</dt><dd>{{ entry.turbo }}</dd>{% endif %}
+        {% if entry.stage %}<dt>{% trans "Stage" %}</dt><dd>{{ entry.get_stage_display }}</dd>{% endif %}
+        <dt>{% trans "Updated" %}</dt><dd>{{ entry.updated_at|date:"SHORT_DATE_FORMAT" }}</dd>
+      </dl>
+    </div>
+    {% if related %}
+    <div class="card"><h3>{% trans "More for this car" %}</h3>
+      {% for r in related %}<p style="margin:.4rem 0"><a href="{{ r.get_absolute_url }}">{{ r.title }}</a><br><span class="muted small">{{ r.get_category_display }}</span></p>{% endfor %}
+    </div>
+    {% endif %}
+    {% if has_access and entry.author_id != user.pk %}
+    <details class="card"><summary class="muted">{% icon "flag" %} {% trans "Report this entry" %}</summary>
+      <p class="muted small" style="margin-top:.6rem">{% trans "Illegal content (e.g. emission-control removal), copyright infringement, dangerous or abusive content." %}</p>
+      <form method="post" action="{% url 'catalog:report' entry.pk %}" class="form">{% csrf_token %}{{ report_form.as_div }}<button class="btn-danger btn-sm">{% trans "Send report" %}</button></form>
+    </details>
+    {% endif %}
+  </aside>
+</div>
+{% endblock %}

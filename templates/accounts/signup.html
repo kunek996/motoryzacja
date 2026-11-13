@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% trans "Sign up" %}{% endblock %}
+{% block content %}
+<div class="card narrow">
+  <h1>{% trans "Create account" %}</h1>
+  <p class="muted">{% trans "We only ask for an email and a nickname. Your real name is never required." %}</p>
+  <form method="post" class="form">{% csrf_token %}{{ form.as_div }}<button style="width:100%">{% trans "Sign up" %}</button></form>
+  <p class="muted small" style="margin-top:1rem"><a href="{% url 'core:terms' %}" target="_blank" rel="noopener">{% trans "Terms of Service" %}</a> · <a href="{% url 'core:privacy' %}" target="_blank" rel="noopener">{% trans "Privacy Policy" %}</a></p>
+  <p class="muted">{% trans "Already have an account?" %} <a href="{% url 'accounts:login' %}">{% trans "Log in" %}</a></p>
+</div>
+{% endblock %}

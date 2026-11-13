@@ -1,0 +1,83 @@
+{% extends "base.html" %}{% load i18n ui %}
+{% block title %}{% if entry %}{% trans "Edit entry" %}{% else %}{% trans "Add entry" %}{% endif %}{% endblock %}
+{% block content %}
+<div style="max-width:860px;margin:0 auto">
+  <h1>{% if entry %}{% trans "Edit entry" %}{% else %}{% trans "Add entry" %}{% endif %}</h1>
+  <div class="msg warning">{% icon "shield" %} {% trans "Do not publish content intended to defeat emission-control systems or illegal for road use. Only share what you have the right to share." %}</div>
+
+  <form method="post" enctype="multipart/form-data" class="form" novalidate>{% csrf_token %}
+    {% if form.non_field_errors %}<ul class="errorlist nonfield">{% for e in form.non_field_errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+    <fieldset><legend>{% trans "Basics" %}</legend>
+      <div class="form-grid">
+        <div>{{ form.car_model.label_tag }}{{ form.car_model }}{{ form.car_model.errors }}<span class="helptext"><a href="{% url 'catalog:suggest_car' %}">{% trans "Missing your car? Suggest it and a moderator will add it." %}</a></span></div>
+        <div>{{ form.category.label_tag }}{{ form.category }}{{ form.category.errors }}</div>
+      </div>
+      <div>{{ form.title.label_tag }}{{ form.title }}{{ form.title.errors }}</div>
+      <div class="form-grid">
+        <div>{{ form.language.label_tag }}{{ form.language }}{{ form.language.errors }}</div>
+        <div>{{ form.model_year.label_tag }}{{ form.model_year }}{{ form.model_year.errors }}</div>
+        <div>{{ form.fuel.label_tag }}{{ form.fuel }}{{ form.fuel.errors }}</div>
+        <div>{{ form.stage.label_tag }}{{ form.stage }}{{ form.stage.errors }}</div>
+      </div>
+    </fieldset>
+
+    <fieldset><legend>{% trans "Hardware" %}</legend>
+      <div class="form-grid">
+        {% for f in form %}{% if f.name in "engine ecu_type gearbox turbo boost_bar" %}
+        <div>{{ f.label_tag }}{{ f }}{% if f.help_text %}<span class="helptext">{{ f.help_text }}</span>{% endif %}{{ f.errors }}</div>
+        {% endif %}{% endfor %}
+      </div>
+    </fieldset>
+
+    <fieldset><legend>{% trans "Results" %}</legend>
+      <div class="form-grid">
+        <div>{{ form.power_before_hp.label_tag }}{{ form.power_before_hp }}{{ form.power_before_hp.errors }}</div>
+        <div>{{ form.power_after_hp.label_tag }}{{ form.power_after_hp }}{{ form.power_after_hp.errors }}</div>
+        <div>{{ form.torque_before_nm.label_tag }}{{ form.torque_before_nm }}{{ form.torque_before_nm.errors }}</div>
+        <div>{{ form.torque_after_nm.label_tag }}{{ form.torque_after_nm }}{{ form.torque_after_nm.errors }}</div>
+      </div>
+    </fieldset>
+
+    <fieldset><legend>{% trans "Description" %}</legend>
+      <div>{{ form.body.label_tag }}{{ form.body }}{{ form.body.errors }}<span class="helptext">{% trans "What did you change, on what fuel, with which supporting mods? Logs and lessons learned help others most." %}</span></div>
+    </fieldset>
+
+    <fieldset data-formset="{{ formset.prefix }}"><legend>{% trans "Settings & parameters" %}</legend>
+      <p class="helptext">{% trans "Structured values such as boost targets, torque limits or shift points." %}</p>
+      {{ formset.management_form }}
+      {% if formset.non_form_errors %}<ul class="errorlist nonfield">{% for e in formset.non_form_errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+      <div class="param-head"><span>{% trans "Parameter" %}</span><span>{% trans "Value" %}</span><span>{% trans "Unit" %}</span><span></span></div>
+      <div data-rows>
+        {% for pf in formset %}
+        <div class="param-row">
+          {{ pf.id }}{{ pf.name }}{{ pf.value }}{{ pf.unit }}
+          {% if pf.instance.pk %}<label>{{ pf.DELETE }} {% trans "remove" %}</label>{% else %}<span></span>{% endif %}
+          {% if pf.errors %}<div style="grid-column:1/-1">{% for field_errors in pf.errors.values %}{{ field_errors }}{% endfor %}</div>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      <template><div class="param-row">{{ formset.empty_form.id }}{{ formset.empty_form.name }}{{ formset.empty_form.value }}{{ formset.empty_form.unit }}<span></span></div></template>
+      <p><button type="button" class="btn-ghost btn-sm" data-add-row>{% icon "plus" %} {% trans "Add parameter" %}</button></p>
+    </fieldset>
+
+    <fieldset><legend>{% trans "Attachments" %}</legend>
+      {% if attachments %}
+        <ul class="files" style="list-style:none;padding:0">
+          {% for a in attachments %}<li style="display:flex;justify-content:space-between;gap:1rem;padding:.3rem 0">{% icon "file" %} {{ a.original_name }} <span class="muted small">{{ a.size|filesizeformat }}</span>
+            <button type="submit" form="del-att-{{ a.pk }}" class="btn-ghost btn-sm">{% icon "trash" %} {% trans "Remove" %}</button></li>{% endfor %}
+        </ul>
+      {% endif %}
+      <div>{{ form.attachments.label_tag }}{{ form.attachments }}<span class="helptext">{{ form.attachments.help_text }}</span>{{ form.attachments.errors }}</div>
+    </fieldset>
+
+    <div class="actions">
+      <button class="btn-lg">{% if entry %}{% trans "Save changes" %}{% else %}{% trans "Publish" %}{% endif %}</button>
+      <a href="{% if entry %}{{ entry.get_absolute_url }}{% else %}{% url 'catalog:home' %}{% endif %}">{% trans "Cancel" %}</a>
+    </div>
+  </form>
+
+  {% for a in attachments %}
+  <form id="del-att-{{ a.pk }}" method="post" action="{% url 'catalog:attachment_delete' a.pk %}" data-confirm="{% trans 'Remove this attachment?' %}">{% csrf_token %}</form>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,1122 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tunehub\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "Polski"
+msgstr "Polski"
+
+msgid "English"
+msgstr "English"
+
+msgid "Deutsch"
+msgstr "Deutsch"
+
+msgid "Library"
+msgstr "Biblioteka"
+
+msgid "Add entry"
+msgstr "Dodaj wpis"
+
+msgid "Subscribe"
+msgstr "Subskrybuj"
+
+msgid "Log out"
+msgstr "Wyloguj"
+
+msgid "Log in"
+msgstr "Zaloguj"
+
+msgid "Sign up"
+msgstr "Załóż konto"
+
+msgid "Language"
+msgstr "Język"
+
+msgid "Terms of Service"
+msgstr "Regulamin"
+
+msgid "Privacy Policy"
+msgstr "Polityka prywatności"
+
+msgid "The community for car tuners"
+msgstr "Społeczność pasjonatów tuningu"
+
+msgid ""
+"Share and find modifications, engine and gearbox maps, and turbo settings "
+"for every make."
+msgstr ""
+"Wymieniaj się i znajduj modyfikacje, mapy silników i skrzyń biegów oraz "
+"ustawienia turbo dla każdej marki."
+
+msgid "Get access: $5 / month"
+msgstr "Uzyskaj dostęp: 5 $ / miesiąc"
+
+msgid "Latest entries"
+msgstr "Najnowsze wpisy"
+
+msgid "No entries yet."
+msgstr "Brak wpisów."
+
+msgid "No entries found."
+msgstr "Nie znaleziono wpisów."
+
+msgid "Create account"
+msgstr "Utwórz konto"
+
+msgid "Check your inbox"
+msgstr "Sprawdź skrzynkę"
+
+msgid ""
+"We sent you a link to confirm your email address. It is valid for 48 hours."
+msgstr "Wysłaliśmy link potwierdzający adres e-mail. Jest ważny 48 godzin."
+
+msgid "Forgot your password?"
+msgstr "Nie pamiętasz hasła?"
+
+msgid "Change password"
+msgstr "Zmień hasło"
+
+msgid "Reset password"
+msgstr "Resetuj hasło"
+
+msgid "Set new password"
+msgstr "Ustaw nowe hasło"
+
+msgid "Send reset link"
+msgstr "Wyślij link"
+
+msgid "Subscription"
+msgstr "Subskrypcja"
+
+msgid "Active."
+msgstr "Aktywna."
+
+msgid "No active subscription."
+msgstr "Brak aktywnej subskrypcji."
+
+msgid "Manage subscription"
+msgstr "Zarządzaj subskrypcją"
+
+msgid "Your data (GDPR)"
+msgstr "Twoje dane (RODO)"
+
+msgid "Download all my data (JSON)"
+msgstr "Pobierz wszystkie moje dane (JSON)"
+
+msgid "Delete my account"
+msgstr "Usuń moje konto"
+
+msgid ""
+"This cancels your subscription and permanently erases your account. Your "
+"published entries stay available but are no longer linked to you. This "
+"cannot be undone."
+msgstr ""
+"To anuluje subskrypcję i trwale usuwa konto. Twoje wpisy pozostaną widoczne,"
+" ale nie będą już z Tobą powiązane. Tej operacji nie można cofnąć."
+
+msgid "Delete permanently"
+msgstr "Usuń trwale"
+
+msgid ""
+"If an account with that email exists, we sent password reset instructions."
+msgstr ""
+"Jeśli konto z tym adresem istnieje, wysłaliśmy instrukcję resetu hasła."
+
+msgid "Full access"
+msgstr "Pełny dostęp"
+
+msgid "month"
+msgstr "miesiąc"
+
+msgid "Maps, settings and modifications for every make"
+msgstr "Mapy, ustawienia i modyfikacje dla każdej marki"
+
+msgid "Download attachments and add your own entries"
+msgstr "Pobieraj załączniki i dodawaj własne wpisy"
+
+msgid "Cancel any time"
+msgstr "Anuluj w dowolnym momencie"
+
+msgid ""
+"Secure payment by Stripe. Taxes are added at checkout where applicable."
+msgstr ""
+"Bezpieczna płatność przez Stripe. Podatki dolicza się w kasie, jeśli "
+"dotyczy."
+
+msgid "Sign up to subscribe"
+msgstr "Załóż konto, aby subskrybować"
+
+msgid "Thank you!"
+msgstr "Dziękujemy!"
+
+msgid ""
+"Your payment is being confirmed. Access is activated within a few seconds; "
+"refresh this page if needed."
+msgstr ""
+"Płatność jest potwierdzana. Dostęp aktywuje się w kilka sekund; w razie "
+"potrzeby odśwież stronę."
+
+msgid "Go to the library"
+msgstr "Przejdź do biblioteki"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Cancellation scheduled at period end."
+msgstr "Anulowanie zaplanowane na koniec okresu."
+
+msgid "Billing portal (card, invoices, cancel)"
+msgstr "Portal płatności (karta, faktury, anulowanie)"
+
+msgid "No subscription."
+msgstr "Brak subskrypcji."
+
+msgid "Search"
+msgstr "Szukaj"
+
+msgid "All categories"
+msgstr "Wszystkie kategorie"
+
+msgid "Make"
+msgstr "Marka"
+
+msgid "Details and downloads are available to subscribers."
+msgstr "Szczegóły i pliki są dostępne dla subskrybentów."
+
+msgid "deleted user"
+msgstr "usunięty użytkownik"
+
+msgid "Power"
+msgstr "Moc"
+
+msgid "Torque"
+msgstr "Moment obrotowy"
+
+msgid "Attachments"
+msgstr "Załączniki"
+
+msgid "Comments"
+msgstr "Komentarze"
+
+msgid "Add comment"
+msgstr "Dodaj komentarz"
+
+msgid "Report this entry"
+msgstr "Zgłoś ten wpis"
+
+msgid "Send report"
+msgstr "Wyślij zgłoszenie"
+
+msgid "Publish"
+msgstr "Opublikuj"
+
+msgid ""
+"Do not publish content intended to defeat emission-control systems or "
+"illegal for road use. Only share what you have the right to share."
+msgstr ""
+"Nie publikuj treści służących do wyłączania układów ograniczających emisje "
+"ani niezgodnych z prawem o ruchu drogowym. Udostępniaj tylko to, do czego "
+"masz prawa."
+
+msgid "Save"
+msgstr "Zapisz"
+
+msgid "Modification"
+msgstr "Modyfikacja"
+
+msgid "Engine map (ECU)"
+msgstr "Mapa silnika (ECU)"
+
+msgid "Gearbox map (TCU)"
+msgstr "Mapa skrzyni biegów (TCU)"
+
+msgid "Turbocharger settings"
+msgstr "Ustawienia turbosprężarki"
+
+msgid "Other"
+msgstr "Inne"
+
+msgid "Published"
+msgstr "Opublikowany"
+
+msgid "Hidden by moderator"
+msgstr "Ukryty przez moderatora"
+
+msgid "title"
+msgstr "tytuł"
+
+msgid "engine / code"
+msgstr "silnik / kod"
+
+msgid "gearbox"
+msgstr "skrzynia biegów"
+
+msgid "description"
+msgstr "opis"
+
+msgid "email"
+msgstr "e-mail"
+
+msgid "nickname"
+msgstr "pseudonim"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Password"
+msgstr "Hasło"
+
+msgid "Incorrect password."
+msgstr "Nieprawidłowe hasło."
+
+msgid "I accept the Terms of Service"
+msgstr "Akceptuję Regulamin"
+
+msgid "I have read the Privacy Policy"
+msgstr "Zapoznałem(-am) się z Polityką prywatności"
+
+msgid "I agree to receive product news by email (optional)"
+msgstr "Zgadzam się na otrzymywanie nowości e-mailem (opcjonalnie)"
+
+msgid "Please confirm your email address first (check your inbox)."
+msgstr "Najpierw potwierdź adres e-mail (sprawdź skrzynkę)."
+
+msgid "File type not allowed. Allowed: %(types)s"
+msgstr "Niedozwolony typ pliku. Dozwolone: %(types)s"
+
+msgid "File too large."
+msgstr "Plik jest za duży."
+
+msgid "Confirm your email address"
+msgstr "Potwierdź adres e-mail"
+
+msgid ""
+"Welcome! Confirm your email by opening this link (valid 48 hours):\n"
+"%(link)s"
+msgstr ""
+"Witamy! Potwierdź adres e-mail, otwierając ten link (ważny 48 godzin):\n"
+"%(link)s"
+
+msgid "This confirmation link is invalid or has expired."
+msgstr "Link potwierdzający jest nieprawidłowy lub wygasł."
+
+msgid "Your account has been deleted."
+msgstr "Twoje konto zostało usunięte."
+
+msgid "Entry published."
+msgstr "Wpis opublikowany."
+
+msgid "Thank you. A moderator will review your report."
+msgstr "Dziękujemy. Moderator rozpatrzy zgłoszenie."
+
+msgid "An active subscription is required to view this content."
+msgstr "Do wyświetlenia tej treści wymagana jest aktywna subskrypcja."
+
+msgid "Confirm your email address first."
+msgstr "Najpierw potwierdź adres e-mail."
+
+msgid ""
+"You (or someone else) requested a password reset. Open this link to choose a"
+" new password:"
+msgstr ""
+"Ty (lub ktoś inny) poprosił o reset hasła. Otwórz ten link, aby ustawić nowe"
+" hasło:"
+
+msgid ""
+"TEMPLATE: this text is a placeholder and must be replaced with terms "
+"prepared by a lawyer before launch."
+msgstr ""
+"SZABLON: ten tekst jest tymczasowy i przed startem musi zostać zastąpiony "
+"regulaminem przygotowanym przez prawnika."
+
+msgid ""
+"TEMPLATE: this text is a placeholder and must be replaced with a policy "
+"prepared by a lawyer (controller identity, legal bases, retention, "
+"processors) before launch."
+msgstr ""
+"SZABLON: ten tekst jest tymczasowy i przed startem musi zostać zastąpiony "
+"polityką przygotowaną przez prawnika (administrator, podstawy prawne, "
+"retencja, podmioty przetwarzające)."
+
+msgid ""
+"Access to the service requires a paid subscription ($5 per month, billed "
+"monthly, cancellable at any time in the customer portal)."
+msgstr ""
+"Dostęp do serwisu wymaga płatnej subskrypcji (5 $ miesięcznie, rozliczana "
+"miesięcznie, można ją anulować w dowolnym momencie w portalu klienta)."
+
+msgid ""
+"Users are responsible for the content they publish and confirm they have the"
+" right to share it."
+msgstr ""
+"Użytkownicy odpowiadają za publikowane treści i potwierdzają, że mają prawo "
+"je udostępniać."
+
+msgid ""
+"Content intended to defeat emission-control systems (DPF, EGR, AdBlue/SCR, "
+"catalytic converters) or for road use contrary to local law is prohibited."
+msgstr ""
+"Zabronione są treści służące do wyłączania układów ograniczających emisje "
+"(DPF, EGR, AdBlue/SCR, katalizatory) lub sprzeczne z lokalnym prawem o ruchu"
+" drogowym."
+
+msgid ""
+"Modifications are made at your own risk. Information is provided as is, "
+"without any warranty."
+msgstr ""
+"Modyfikacje wykonujesz na własne ryzyko. Informacje udostępniamy w stanie "
+"„takim, jakim są”, bez gwarancji."
+
+msgid "We may remove content and suspend accounts that violate these terms."
+msgstr "Możemy usuwać treści i zawieszać konta naruszające regulamin."
+
+msgid ""
+"We collect only: email, nickname, language, consent records and your "
+"content."
+msgstr "Zbieramy tylko: e-mail, pseudonim, język, zapisy zgód i Twoje treści."
+
+msgid ""
+"Payments are processed by Stripe; we never see or store your card number."
+msgstr ""
+"Płatności obsługuje Stripe; nigdy nie widzimy ani nie przechowujemy numeru "
+"Twojej karty."
+
+msgid ""
+"We use only essential cookies (session, security, language). No advertising "
+"or analytics trackers."
+msgstr ""
+"Używamy wyłącznie niezbędnych plików cookie (sesja, bezpieczeństwo, język). "
+"Bez reklam i trackerów analitycznych."
+
+msgid ""
+"You can download all your data or delete your account at any time in your "
+"account settings."
+msgstr ""
+"W ustawieniach konta w każdej chwili możesz pobrać wszystkie swoje dane lub "
+"usunąć konto."
+
+msgid "Language for emails"
+msgstr "Język wiadomości e-mail"
+
+msgid "This nickname is already taken."
+msgstr "Ten pseudonim jest już zajęty."
+
+msgid "Use 3–30 characters: letters, digits, dot, dash or underscore."
+msgstr "Użyj 3–30 znaków: liter, cyfr, kropki, myślnika lub podkreślnika."
+
+msgid ""
+"3–30 characters: letters, digits, dot, dash, underscore. Visible publicly."
+msgstr ""
+"3–30 znaków: litery, cyfry, kropka, myślnik, podkreślnik. Widoczny "
+"publicznie."
+
+msgid "about me"
+msgstr "o mnie"
+
+msgid "email me about comments on my entries"
+msgstr "powiadamiaj mnie e-mailem o komentarzach do moich wpisów"
+
+msgid "Resend confirmation email"
+msgstr "Wyślij ponownie e-mail potwierdzający"
+
+msgid "Send"
+msgstr "Wyślij"
+
+msgid "Changes saved."
+msgstr "Zmiany zapisane."
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "View public profile"
+msgstr "Zobacz profil publiczny"
+
+msgid "Security"
+msgstr "Bezpieczeństwo"
+
+msgid "Last login"
+msgstr "Ostatnie logowanie"
+
+msgid ""
+"You can download everything we store about you, or erase your account at any"
+" time."
+msgstr ""
+"W każdej chwili możesz pobrać wszystko, co o Tobie przechowujemy, lub usunąć"
+" konto."
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "Didn't get the confirmation email?"
+msgstr "Nie dotarł e-mail potwierdzający?"
+
+msgid "New here?"
+msgstr "Pierwszy raz tutaj?"
+
+msgid "Member since"
+msgstr "Członek od"
+
+msgid "entries"
+msgstr "wpisów"
+
+msgid "helpful votes"
+msgstr "głosów „pomocne”"
+
+msgid "Entries"
+msgstr "Wpisy"
+
+msgid ""
+"We only ask for an email and a nickname. Your real name is never required."
+msgstr ""
+"Prosimy tylko o e-mail i pseudonim. Nigdy nie wymagamy imienia i nazwiska."
+
+msgid "Already have an account?"
+msgstr "Masz już konto?"
+
+msgid "Account settings"
+msgstr "Ustawienia konta"
+
+msgid "My profile"
+msgstr "Mój profil"
+
+msgid "My entries"
+msgstr "Moje wpisy"
+
+msgid "Saved entries"
+msgstr "Zapisane wpisy"
+
+msgid "Account menu"
+msgstr "Menu konta"
+
+msgid "Moderation panel"
+msgstr "Panel moderacji"
+
+msgid "Test subscription activated (development mode)."
+msgstr "Testowa subskrypcja aktywowana (tryb deweloperski)."
+
+msgid "Test subscription cancelled (development mode)."
+msgstr "Testowa subskrypcja anulowana (tryb deweloperski)."
+
+msgid "Payments are not configured yet. Please try again later."
+msgstr "Płatności nie są jeszcze skonfigurowane. Spróbuj później."
+
+msgid "The payment provider is temporarily unavailable. Please try again."
+msgstr "Operator płatności jest chwilowo niedostępny. Spróbuj ponownie."
+
+msgid "Active"
+msgstr "Aktywna"
+
+msgid "Access until"
+msgstr "Dostęp do"
+
+msgid "Renews on"
+msgstr "Odnowienie"
+
+msgid "Cancel test subscription"
+msgstr "Anuluj testową subskrypcję"
+
+msgid "Activate test subscription"
+msgstr "Aktywuj testową subskrypcję"
+
+msgid "One plan. Everything included."
+msgstr "Jeden plan. Wszystko w cenie."
+
+msgid "No ads, no data selling – the community is funded by members."
+msgstr "Bez reklam i handlu danymi – społeczność utrzymują członkowie."
+
+msgid "Comments, helpful votes and saved entries"
+msgstr "Komentarze, głosy i zapisane wpisy"
+
+msgid "Content in Polish, English and German"
+msgstr "Treści po polsku, angielsku i niemiecku"
+
+msgid "Development mode"
+msgstr "Tryb deweloperski"
+
+msgid ""
+"Stripe keys are not configured, so you can simulate a subscription to test "
+"the paid features locally. This button is disabled in production."
+msgstr ""
+"Klucze Stripe nie są skonfigurowane, więc możesz zasymulować subskrypcję, "
+"aby lokalnie przetestować płatne funkcje. Na produkcji ten przycisk jest "
+"wyłączony."
+
+msgid "Questions"
+msgstr "Pytania"
+
+msgid "Can I cancel any time?"
+msgstr "Czy mogę zrezygnować w każdej chwili?"
+
+msgid ""
+"Yes. Cancel in the billing portal; access stays until the end of the paid "
+"period."
+msgstr ""
+"Tak. Anulujesz w portalu płatności; dostęp zostaje do końca opłaconego "
+"okresu."
+
+msgid "Do you store my card?"
+msgstr "Czy przechowujecie moją kartę?"
+
+msgid "No. Payments are handled by Stripe; we never see your card number."
+msgstr ""
+"Nie. Płatności obsługuje Stripe; nigdy nie widzimy numeru Twojej karty."
+
+msgid "Do I get an invoice?"
+msgstr "Czy dostanę fakturę?"
+
+msgid ""
+"Yes, every payment comes with an invoice. Business customers can enter a VAT"
+" ID at checkout."
+msgstr "Tak, każda płatność ma fakturę. Firmy mogą podać NIP przy płatności."
+
+msgid "Pricing"
+msgstr "Cennik"
+
+msgid "This file looks like an executable and cannot be uploaded."
+msgstr "Ten plik wygląda na program wykonywalny i nie może zostać przesłany."
+
+msgid "Attachments (maps, logs, photos)"
+msgstr "Załączniki (mapy, logi, zdjęcia)"
+
+msgid "Up to %(n)s files, max %(mb)s MB each."
+msgstr "Do %(n)s plików, maks. %(mb)s MB każdy."
+
+msgid "Newest"
+msgstr "Najnowsze"
+
+msgid "Most helpful"
+msgstr "Najbardziej pomocne"
+
+msgid "Most discussed"
+msgstr "Najczęściej komentowane"
+
+msgid "Model"
+msgstr "Model"
+
+msgid "All models"
+msgstr "Wszystkie modele"
+
+msgid "All makes"
+msgstr "Wszystkie marki"
+
+msgid "Category"
+msgstr "Kategoria"
+
+msgid "Sort"
+msgstr "Sortuj"
+
+msgid "The image file is damaged or not an image."
+msgstr "Plik obrazu jest uszkodzony lub nie jest obrazem."
+
+msgid "Too many attachments (max %(n)s per entry)."
+msgstr "Za dużo załączników (maks. %(n)s na wpis)."
+
+msgid "This value looks unrealistic. Please double-check."
+msgstr "Ta wartość wygląda nierealnie. Sprawdź ją."
+
+msgid "e.g. Boost target @ 4000 rpm"
+msgstr "np. Doładowanie przy 4000 obr./min"
+
+msgid "Title, engine, ECU, turbo…"
+msgstr "Tytuł, silnik, ECU, turbo…"
+
+msgid "Any fuel"
+msgstr "Dowolne paliwo"
+
+msgid "Any stage"
+msgstr "Dowolny stage"
+
+msgid "Any language"
+msgstr "Dowolny język"
+
+msgid "category"
+msgstr "kategoria"
+
+msgid "content language"
+msgstr "język treści"
+
+msgid "model year"
+msgstr "rok modelowy"
+
+msgid "fuel"
+msgstr "paliwo"
+
+msgid "stage"
+msgstr "stage"
+
+msgid "turbocharger"
+msgstr "turbosprężarka"
+
+msgid "peak boost (bar)"
+msgstr "maks. doładowanie (bar)"
+
+msgid "power before (hp)"
+msgstr "moc przed (KM)"
+
+msgid "power after (hp)"
+msgstr "moc po (KM)"
+
+msgid "torque before (Nm)"
+msgstr "moment przed (Nm)"
+
+msgid "torque after (Nm)"
+msgstr "moment po (Nm)"
+
+msgid "parameter"
+msgstr "parametr"
+
+msgid "value"
+msgstr "wartość"
+
+msgid "unit"
+msgstr "jednostka"
+
+msgid "comment"
+msgstr "komentarz"
+
+msgid "reason"
+msgstr "powód"
+
+msgid "car"
+msgstr "samochód"
+
+msgid "Petrol"
+msgstr "Benzyna"
+
+msgid "Diesel"
+msgstr "Diesel"
+
+msgid "Hybrid"
+msgstr "Hybryda"
+
+msgid "LPG"
+msgstr "LPG"
+
+msgid "E85 / flex fuel"
+msgstr "E85 / flex fuel"
+
+msgid "Electric"
+msgstr "Elektryczny"
+
+msgid "Stock / reference"
+msgstr "Seria / referencja"
+
+msgid "Stage 1"
+msgstr "Stage 1"
+
+msgid "Stage 2"
+msgstr "Stage 2"
+
+msgid "Stage 3+"
+msgstr "Stage 3+"
+
+msgid "Custom"
+msgstr "Indywidualny"
+
+msgid "e.g. 2.0 TFSI EA888 Gen3"
+msgstr "np. 2.0 TFSI EA888 Gen3"
+
+msgid "e.g. Bosch MED17.5"
+msgstr "np. Bosch MED17.5"
+
+msgid "e.g. DQ250 DSG, ZF 8HP"
+msgstr "np. DQ250 DSG, ZF 8HP"
+
+msgid "e.g. IHI IS38, Garrett GTX3076R"
+msgstr "np. IHI IS38, Garrett GTX3076R"
+
+msgid "Attachment removed."
+msgstr "Załącznik usunięty."
+
+msgid "Entry deleted."
+msgstr "Wpis usunięty."
+
+msgid "New comment on “%(title)s”"
+msgstr "Nowy komentarz do „%(title)s”"
+
+msgid ""
+"%(user)s commented on your entry:\n"
+"\n"
+"%(body)s\n"
+"\n"
+"%(link)s\n"
+"\n"
+"You can turn these emails off in your account settings."
+msgstr ""
+"%(user)s skomentował(a) Twój wpis:\n"
+"\n"
+"%(body)s\n"
+"\n"
+"%(link)s\n"
+"\n"
+"Możesz wyłączyć te wiadomości w ustawieniach konta."
+
+msgid "You have already reported this entry."
+msgstr "Ten wpis został już przez Ciebie zgłoszony."
+
+msgid "You cannot vote for your own entry."
+msgstr "Nie możesz głosować na własny wpis."
+
+msgid "Session expired"
+msgstr "Sesja wygasła"
+
+msgid ""
+"For your security the form could not be submitted. Go back, refresh the page"
+" and try again."
+msgstr ""
+"Ze względów bezpieczeństwa formularz nie został wysłany. Wróć, odśwież "
+"stronę i spróbuj ponownie."
+
+msgid "Home"
+msgstr "Strona główna"
+
+msgid "Page not found"
+msgstr "Nie znaleziono strony"
+
+msgid "The page may have been moved, hidden by a moderator or never existed."
+msgstr ""
+"Strona mogła zostać przeniesiona, ukryta przez moderatora lub nigdy nie "
+"istniała."
+
+msgid "Browse the library"
+msgstr "Przeglądaj bibliotekę"
+
+msgid "Too many requests"
+msgstr "Zbyt wiele żądań"
+
+msgid "Please wait a few minutes and try again."
+msgstr "Odczekaj kilka minut i spróbuj ponownie."
+
+msgid "Pages"
+msgstr "Strony"
+
+msgid "Previous"
+msgstr "Poprzednia"
+
+msgid "Next"
+msgstr "Następna"
+
+msgid "Tuning community"
+msgstr "Społeczność tuningowa"
+
+msgid "Skip to content"
+msgstr "Przejdź do treści"
+
+msgid ""
+"Development mode – demo data, emails printed to the console, payments "
+"simulated."
+msgstr ""
+"Tryb deweloperski – dane demo, e-maile w konsoli, płatności symulowane."
+
+msgid "Main"
+msgstr "Główna nawigacja"
+
+msgid "Makes"
+msgstr "Marki"
+
+msgid "Built by tuners, for tuners."
+msgstr "Tworzone przez tunerów, dla tunerów."
+
+msgid "Helpful"
+msgstr "Pomocne"
+
+msgid "Saved"
+msgstr "Zapisano"
+
+msgid "Edit"
+msgstr "Edytuj"
+
+msgid "Delete"
+msgstr "Usuń"
+
+msgid "Helpful votes"
+msgstr "Głosy „pomocne”"
+
+msgid "hp"
+msgstr "KM"
+
+msgid "Peak boost"
+msgstr "Maks. doładowanie"
+
+msgid "Description"
+msgstr "Opis"
+
+msgid "Settings & parameters"
+msgstr "Ustawienia i parametry"
+
+msgid "Parameter"
+msgstr "Parametr"
+
+msgid "Value"
+msgstr "Wartość"
+
+msgid ""
+"Files are shared by members. Always verify maps (checksums, logs) before "
+"flashing – at your own risk."
+msgstr ""
+"Pliki udostępniają członkowie. Zawsze weryfikuj mapy (sumy kontrolne, logi) "
+"przed wgraniem – na własne ryzyko."
+
+msgid "Delete this comment?"
+msgstr "Usunąć ten komentarz?"
+
+msgid "No comments yet. Ask a question or share your results."
+msgstr "Brak komentarzy. Zadaj pytanie lub podziel się wynikami."
+
+msgid "This entry is available to subscribers"
+msgstr "Ten wpis jest dostępny dla subskrybentów"
+
+msgid ""
+"Full description, %(p)s parameters, %(a)s attachments and %(c)s comments."
+msgstr "Pełny opis, parametry: %(p)s, załączniki: %(a)s, komentarze: %(c)s."
+
+msgid "Specification"
+msgstr "Specyfikacja"
+
+msgid "Car"
+msgstr "Samochód"
+
+msgid "Model year"
+msgstr "Rok modelowy"
+
+msgid "Engine"
+msgstr "Silnik"
+
+msgid "Fuel"
+msgstr "Paliwo"
+
+msgid "ECU"
+msgstr "ECU"
+
+msgid "Gearbox"
+msgstr "Skrzynia biegów"
+
+msgid "Turbo"
+msgstr "Turbo"
+
+msgid "Stage"
+msgstr "Stage"
+
+msgid "Updated"
+msgstr "Zaktualizowano"
+
+msgid "More for this car"
+msgstr "Więcej dla tego auta"
+
+msgid ""
+"Illegal content (e.g. emission-control removal), copyright infringement, "
+"dangerous or abusive content."
+msgstr ""
+"Treści nielegalne (np. usuwanie układów emisji), naruszenie praw autorskich,"
+" treści niebezpieczne lub obraźliwe."
+
+msgid "Edit entry"
+msgstr "Edytuj wpis"
+
+msgid "Basics"
+msgstr "Podstawowe informacje"
+
+msgid "Hardware"
+msgstr "Sprzęt"
+
+msgid "Results"
+msgstr "Wyniki"
+
+msgid ""
+"What did you change, on what fuel, with which supporting mods? Logs and "
+"lessons learned help others most."
+msgstr ""
+"Co zmieniłeś, na jakim paliwie, z jakimi modyfikacjami? Logi i wnioski "
+"najbardziej pomagają innym."
+
+msgid ""
+"Structured values such as boost targets, torque limits or shift points."
+msgstr ""
+"Wartości strukturalne, np. doładowanie, limity momentu, punkty zmiany "
+"biegów."
+
+msgid "Unit"
+msgstr "Jednostka"
+
+msgid "remove"
+msgstr "usuń"
+
+msgid "Add parameter"
+msgstr "Dodaj parametr"
+
+msgid "Remove"
+msgstr "Usuń"
+
+msgid "Save changes"
+msgstr "Zapisz zmiany"
+
+msgid "Remove this attachment?"
+msgstr "Usunąć ten załącznik?"
+
+msgid "Delete entry"
+msgstr "Usuń wpis"
+
+msgid ""
+"Delete “%(title)s” together with its parameters, attachments, comments and "
+"votes? This cannot be undone."
+msgstr ""
+"Usunąć „%(title)s” razem z parametrami, załącznikami, komentarzami i "
+"głosami? Tej operacji nie można cofnąć."
+
+msgid "Nothing here yet."
+msgstr "Na razie nic tu nie ma."
+
+msgid "Filters"
+msgstr "Filtry"
+
+msgid "Clear"
+msgstr "Wyczyść"
+
+msgid "Clear filters"
+msgstr "Wyczyść filtry"
+
+msgid "Browse entries by manufacturer."
+msgstr "Przeglądaj wpisy według producenta."
+
+msgid "No makes yet."
+msgstr "Brak marek."
+
+msgid "Tuning community: maps, settings, modifications"
+msgstr "Społeczność tuningowa: mapy, ustawienia, modyfikacje"
+
+msgid "For tuners, by tuners"
+msgstr "Od tunerów, dla tunerów"
+
+msgid "Share your setup"
+msgstr "Podziel się swoim setupem"
+
+msgid "makes"
+msgstr "marek"
+
+msgid "members"
+msgstr "członków"
+
+msgid "Engine maps (ECU)"
+msgstr "Mapy silnika (ECU)"
+
+msgid "Boost, ignition and fuel tables with before/after numbers."
+msgstr "Doładowanie, zapłon i dawka paliwa z wynikami przed/po."
+
+msgid "Gearbox maps (TCU)"
+msgstr "Mapy skrzyń (TCU)"
+
+msgid "Torque limits, shift points and clutch pressures."
+msgstr "Limity momentu, punkty zmiany biegów i docisk sprzęgieł."
+
+msgid "Turbo settings"
+msgstr "Ustawienia turbo"
+
+msgid "Boost curves, wastegate and turbo upgrades."
+msgstr "Krzywe doładowania, wastegate i większe turbiny."
+
+msgid "Modifications"
+msgstr "Modyfikacje"
+
+msgid "Hardware, maintenance and measured results."
+msgstr "Sprzęt, serwis i zmierzone wyniki."
+
+msgid "Popular makes"
+msgstr "Popularne marki"
+
+msgid "How it works"
+msgstr "Jak to działa"
+
+msgid "Create an account"
+msgstr "Załóż konto"
+
+msgid "Confirm your email – we only store what is necessary."
+msgstr "Potwierdź e-mail – przechowujemy tylko to, co niezbędne."
+
+msgid "Subscribe for $5 / month"
+msgstr "Subskrybuj za 5 $ / miesiąc"
+
+msgid "Secure payment by Stripe. Cancel any time in one click."
+msgstr "Bezpieczna płatność przez Stripe. Rezygnacja jednym kliknięciem."
+
+msgid "Share and learn"
+msgstr "Dziel się i ucz"
+
+msgid "Download maps, compare settings and vote for the most helpful entries."
+msgstr "Pobieraj mapy, porównuj ustawienia i głosuj na najlepsze wpisy."
+
+msgid "Ready to unlock every map and setting?"
+msgstr "Gotowy na dostęp do wszystkich map i ustawień?"
+
+msgid "Full access to the library, attachments and the community."
+msgstr "Pełny dostęp do biblioteki, załączników i społeczności."
+
+msgid ""
+"An account with this email already exists. If it is yours, log in or reset "
+"your password."
+msgstr ""
+"Konto z tym adresem już istnieje. Jeśli należy do Ciebie, zaloguj się lub "
+"zresetuj hasło."
+
+msgid "Your email address is already confirmed. Please log in."
+msgstr "Twój adres e-mail jest już potwierdzony. Zaloguj się."
+
+msgid "Email confirmed. You can now log in."
+msgstr "Adres e-mail potwierdzony. Możesz się zalogować."
+
+msgid ""
+"Your last payment failed. Please update your payment method in the billing "
+"portal."
+msgstr ""
+"Ostatnia płatność nie powiodła się. Zaktualizuj metodę płatności w portalu "
+"płatności."
+
+msgid "The end year must not be earlier than the start year."
+msgstr "Rok końcowy nie może być wcześniejszy niż początkowy."
+
+msgid "make"
+msgstr "marka"
+
+msgid "model"
+msgstr "model"
+
+msgid "generation / code"
+msgstr "generacja / kod"
+
+msgid "from year"
+msgstr "od roku"
+
+msgid "to year"
+msgstr "do roku"
+
+msgid "e.g. B8, E46, MK7"
+msgstr "np. B8, E46, MK7"
+
+msgid "Thank you! A moderator will add the car to the catalogue soon."
+msgstr "Dziękujemy! Moderator wkrótce doda auto do katalogu."
+
+msgid "Suggest a missing car"
+msgstr "Zaproponuj brakujące auto"
+
+msgid "Send suggestion"
+msgstr "Wyślij propozycję"
+
+msgid "Missing your car? Suggest it and a moderator will add it."
+msgstr "Brakuje Twojego auta? Zaproponuj je, a moderator je doda."
+
+msgid "%(counter)s entry"
+msgid_plural "%(counter)s entries"
+msgstr[0] "%(counter)s wpis"
+msgstr[1] "%(counter)s wpisy"
+msgstr[2] "%(counter)s wpisów"
+
+msgid "%(counter)s download"
+msgid_plural "%(counter)s downloads"
+msgstr[0] "%(counter)s pobranie"
+msgstr[1] "%(counter)s pobrania"
+msgstr[2] "%(counter)s pobrań"

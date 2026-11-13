@@ -1,0 +1,43 @@
+{% extends "base.html" %}{% load i18n ui %}
+{% block title %}{% trans "Library" %}{% endblock %}
+{% block content %}
+<div class="library">
+  <aside class="filters">
+    <details class="card" open data-collapse-mobile>
+      <summary>{% trans "Filters" %} <span class="muted small">{% icon "search" %}</span></summary>
+      <form method="get" class="form" style="margin-top:.8rem">
+        <div>{{ form.q.label_tag }}{{ form.q }}</div>
+        <div><label for="{{ form.make.id_for_label }}">{{ form.make.label }}</label>
+          <select name="make" id="{{ form.make.id_for_label }}" data-models-url="{% url 'catalog:api_models' %}" data-models-target="{{ form.car_model.id_for_label }}">
+            {% for value, label in form.make.field.choices %}<option value="{{ value }}"{% if form.make.value|stringformat:"s" == value|stringformat:"s" %} selected{% endif %}>{{ label }}</option>{% endfor %}
+          </select></div>
+        <div>{{ form.car_model.label_tag }}{{ form.car_model }}</div>
+        <div>{{ form.category.label_tag }}{{ form.category }}</div>
+        <div>{{ form.fuel.label_tag }}{{ form.fuel }}</div>
+        <div>{{ form.stage.label_tag }}{{ form.stage }}</div>
+        <div>{{ form.language.label_tag }}{{ form.language }}</div>
+        <div>{{ form.sort.label_tag }}{{ form.sort }}</div>
+        <div class="actions"><button>{% trans "Search" %}</button><a href="{% url 'catalog:home' %}">{% trans "Clear" %}</a></div>
+      </form>
+    </details>
+  </aside>
+  <section>
+    <div class="results-head">
+      <div>
+        <h1 style="margin:0">{% trans "Library" %}</h1>
+        <span class="muted">{% blocktrans count counter=total %}{{ counter }} entry{% plural %}{{ counter }} entries{% endblocktrans %}</span>
+      </div>
+      {% if user.has_access %}<a class="btn" href="{% url 'catalog:create' %}">{% icon "plus" %} {% trans "Add entry" %}</a>{% endif %}
+    </div>
+    {% if not user.has_access %}
+      <div class="msg">{% icon "lock" %} {% trans "Details and downloads are available to subscribers." %} <a href="{% url 'billing:pricing' %}">{% trans "Subscribe" %}</a></div>
+    {% endif %}
+    <div class="grid">
+      {% for e in page %}{% include "catalog/_card.html" %}{% empty %}
+        <div class="card empty" style="grid-column:1/-1">{% icon "search" "icon" %}<p>{% trans "No entries found." %}</p><a href="{% url 'catalog:home' %}">{% trans "Clear filters" %}</a></div>
+      {% endfor %}
+    </div>
+    {% include "_pagination.html" %}
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% trans "Delete entry" %}{% endblock %}
+{% block content %}
+<div class="card narrow">
+  <h1>{% trans "Delete entry" %}</h1>
+  <p>{% blocktrans with title=entry.title %}Delete “{{ title }}” together with its parameters, attachments, comments and votes? This cannot be undone.{% endblocktrans %}</p>
+  <form method="post" class="actions">{% csrf_token %}
+    <button class="btn-danger">{% trans "Delete permanently" %}</button>
+    <a href="{{ entry.get_absolute_url }}">{% trans "Cancel" %}</a>
+  </form>
+</div>
+{% endblock %}

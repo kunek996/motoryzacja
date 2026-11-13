@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% trans "Page not found" %}{% endblock %}
+{% block content %}
+<div class="error-page">
+  <div class="code">404</div>
+  <h1>{% trans "Page not found" %}</h1>
+  <p class="muted">{% trans "The page may have been moved, hidden by a moderator or never existed." %}</p>
+  <div class="actions" style="justify-content:center"><a class="btn" href="{% url 'catalog:home' %}">{% trans "Browse the library" %}</a><a class="btn btn-ghost" href="{% url 'core:landing' %}">{% trans "Home" %}</a></div>
+</div>
+{% endblock %}

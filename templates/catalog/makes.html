@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% trans "Makes" %}{% endblock %}
+{% block content %}
+<h1>{% trans "Makes" %}</h1>
+<p class="muted">{% trans "Browse entries by manufacturer." %}</p>
+<div class="grid">
+  {% for m in makes %}
+  <a class="tile" href="{{ list_url }}?make={{ m.pk }}">
+    <b>{{ m.name }}</b>
+    <span>{% blocktrans count counter=m.n %}{{ counter }} entry{% plural %}{{ counter }} entries{% endblocktrans %}</span>
+  </a>
+  {% empty %}<p class="muted">{% trans "No makes yet." %}</p>{% endfor %}
+</div>
+{% endblock %}

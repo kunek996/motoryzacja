@@ -1,0 +1,81 @@
+{% load i18n static ui %}{% get_current_language as LANG %}<!doctype html>
+<html lang="{{ LANG }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% trans "Tuning community" %}{% endblock %} | {{ SITE_NAME }}</title>
+  <meta name="description" content="{% block description %}{% trans "Share and find modifications, engine and gearbox maps, and turbo settings for every make." %}{% endblock %}">
+  {% block canonical %}<link rel="canonical" href="{{ SITE_URL }}{{ request.path }}">{% endblock %}
+  {% for code, url in LANGUAGE_ALTERNATES %}<link rel="alternate" hreflang="{{ code }}" href="{{ SITE_URL }}{{ url }}">
+  {% endfor %}<meta name="theme-color" content="#e8491d">
+  <meta property="og:site_name" content="{{ SITE_NAME }}">
+  <meta property="og:title" content="{% block og_title %}{{ SITE_NAME }}{% endblock %}">
+  <link rel="icon" href="{% static 'favicon.svg' %}" type="image/svg+xml">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  <script src="{% static 'js/app.js' %}" defer></script>
+  {% block head %}{% endblock %}
+</head>
+<body>
+<a class="sr-only" href="#main">{% trans "Skip to content" %}</a>
+{% if DEBUG_BANNER %}<div class="devbar">{% trans "Development mode – demo data, emails printed to the console, payments simulated." %}</div>{% endif %}
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="{% url 'core:landing' %}"><img src="{% static 'favicon.svg' %}" alt="" width="28" height="28">{{ SITE_NAME }}</a>
+    <nav class="nav" aria-label="{% trans 'Main' %}">
+      {% url 'catalog:home' as lib_url %}{% url 'catalog:makes' as makes_url %}
+      <a href="{{ lib_url }}"{% if request.path == lib_url %} class="active" aria-current="page"{% endif %}>{% trans "Library" %}</a>
+      <a href="{{ makes_url }}"{% if request.path == makes_url %} class="active" aria-current="page"{% endif %}>{% trans "Makes" %}</a>
+      <span class="spacer"></span>
+      {% if user.is_authenticated %}
+        {% if user.has_access %}
+          <a class="btn btn-sm" href="{% url 'catalog:create' %}" aria-label="{% trans 'Add entry' %}">{% icon "plus" %} <span class="hide-sm">{% trans "Add entry" %}</span></a>
+        {% else %}
+          <a class="btn btn-sm" href="{% url 'billing:pricing' %}">{% trans "Subscribe" %}</a>
+        {% endif %}
+        <details class="menu">
+          <summary aria-label="{% trans 'Account menu' %}"><span class="avatar">{{ user.display_name|initial }}</span><span>{{ user.display_name }}</span></summary>
+          <div class="dropdown">
+            <a href="{{ user.get_absolute_url }}">{% trans "My profile" %}</a>
+            {% if user.has_access %}
+              <a href="{% url 'catalog:mine' %}">{% trans "My entries" %}</a>
+              <a href="{% url 'catalog:saved' %}">{% trans "Saved entries" %}</a>
+            {% endif %}
+            <a href="{% url 'accounts:account' %}">{% trans "Account settings" %}</a>
+            <a href="{% url 'billing:manage' %}">{% trans "Subscription" %}</a>
+            {% if user.is_staff %}<a href="{{ ADMIN_PATH }}">{% trans "Moderation panel" %}</a>{% endif %}
+            <hr>
+            <form method="post" action="{% url 'accounts:logout' %}">{% csrf_token %}<button class="linkbtn" style="padding:.4rem .65rem">{% trans "Log out" %}</button></form>
+          </div>
+        </details>
+      {% else %}
+        <a href="{% url 'accounts:login' %}">{% trans "Log in" %}</a>
+        <a class="btn btn-sm" href="{% url 'accounts:signup' %}">{% trans "Sign up" %}</a>
+      {% endif %}
+      <form method="post" action="{% url 'set_language' %}" class="inline lang">
+        {% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}">
+        <label class="sr-only" for="lang-select">{% trans "Language" %}</label>
+        <select id="lang-select" name="language" data-autosubmit>
+          {% get_available_languages as LANGUAGES %}
+          {% for code, name in LANGUAGES %}<option value="{{ code }}"{% if code == LANG %} selected{% endif %}>{{ code|upper }}</option>{% endfor %}
+        </select>
+        <noscript><button class="btn-sm">OK</button></noscript>
+      </form>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+  {% for m in messages %}<div class="msg {{ m.tags }}" role="status">{{ m }}</div>{% endfor %}
+  {% block content %}{% endblock %}
+</main>
+<footer class="site">
+  <div class="wrap">
+    <span>© {% now "Y" %} {{ SITE_NAME }} · {% trans "Built by tuners, for tuners." %}</span>
+    <span>
+      <a href="{% url 'billing:pricing' %}">{% trans "Pricing" %}</a> ·
+      <a href="{% url 'core:terms' %}">{% trans "Terms of Service" %}</a> ·
+      <a href="{% url 'core:privacy' %}">{% trans "Privacy Policy" %}</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>

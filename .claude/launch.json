@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "tunehub",
+      "runtimeExecutable": "C:\\Users\\aplok\\.venvs\\tunehub\\Scripts\\python.exe",
+      "runtimeArgs": ["-W", "ignore", "manage.py", "runserver", "127.0.0.1:8000"],
+      "port": 8000
+    }
+  ]
+}

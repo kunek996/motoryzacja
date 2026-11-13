@@ -1,0 +1,47 @@
+{% extends "base.html" %}{% load i18n ui %}
+{% block title %}{% trans "Pricing" %}{% endblock %}
+{% block content %}
+<div style="text-align:center;margin-top:1rem">
+  <h1>{% trans "One plan. Everything included." %}</h1>
+  <p class="muted">{% trans "No ads, no data selling – the community is funded by members." %}</p>
+</div>
+<div class="card price-card">
+  <h2 style="margin-top:0">{% trans "Full access" %}</h2>
+  <div class="price">$5 <small>/ {% trans "month" %}</small></div>
+  <ul class="checks">
+    <li>{% trans "Maps, settings and modifications for every make" %}</li>
+    <li>{% trans "Download attachments and add your own entries" %}</li>
+    <li>{% trans "Comments, helpful votes and saved entries" %}</li>
+    <li>{% trans "Content in Polish, English and German" %}</li>
+    <li>{% trans "Cancel any time" %}</li>
+  </ul>
+  {% if user.has_access %}
+    <a class="btn" href="{% url 'billing:manage' %}">{% trans "Manage subscription" %}</a>
+  {% elif user.is_authenticated %}
+    <form method="post" action="{% url 'billing:checkout' %}">{% csrf_token %}<button class="btn-lg" style="width:100%">{% trans "Subscribe" %}</button></form>
+    <p class="muted small" style="margin-top:.8rem">{% icon "shield" %} {% trans "Secure payment by Stripe. Taxes are added at checkout where applicable." %}</p>
+  {% else %}
+    <a class="btn btn-lg" style="width:100%" href="{% url 'accounts:signup' %}">{% trans "Sign up to subscribe" %}</a>
+    <p class="muted small" style="margin-top:.8rem">{% trans "Already have an account?" %} <a href="{% url 'accounts:login' %}?next={{ request.path|urlencode }}">{% trans "Log in" %}</a></p>
+  {% endif %}
+</div>
+
+{% if dev_mode and user.is_authenticated %}
+<div class="card devbox narrow">
+  <h3>{% trans "Development mode" %}</h3>
+  <p class="small">{% trans "Stripe keys are not configured, so you can simulate a subscription to test the paid features locally. This button is disabled in production." %}</p>
+  {% if user.has_access %}
+    <form method="post" action="{% url 'billing:dev_cancel' %}">{% csrf_token %}<button class="btn-ghost">{% trans "Cancel test subscription" %}</button></form>
+  {% else %}
+    <form method="post" action="{% url 'billing:dev_activate' %}">{% csrf_token %}<button>{% trans "Activate test subscription" %}</button></form>
+  {% endif %}
+</div>
+{% endif %}
+
+<div class="card narrow">
+  <h3>{% trans "Questions" %}</h3>
+  <p><b>{% trans "Can I cancel any time?" %}</b><br><span class="muted">{% trans "Yes. Cancel in the billing portal; access stays until the end of the paid period." %}</span></p>
+  <p><b>{% trans "Do you store my card?" %}</b><br><span class="muted">{% trans "No. Payments are handled by Stripe; we never see your card number." %}</span></p>
+  <p><b>{% trans "Do I get an invoice?" %}</b><br><span class="muted">{% trans "Yes, every payment comes with an invoice. Business customers can enter a VAT ID at checkout." %}</span></p>
+</div>
+{% endblock %}

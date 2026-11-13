@@ -1,0 +1,10 @@
+{% load i18n ui %}{% if page.paginator.num_pages > 1 %}
+<nav class="pagination" aria-label="{% trans 'Pages' %}">
+  {% if page.has_previous %}<a href="{% url_replace page=page.previous_page_number %}" rel="prev">&larr; {% trans "Previous" %}</a>{% endif %}
+  {% for n in page.paginator.page_range %}
+    {% if n == page.number %}<span class="current" aria-current="page">{{ n }}</span>
+    {% elif n > page.number|add:-3 and n < page.number|add:3 %}<a href="{% url_replace page=n %}">{{ n }}</a>{% endif %}
+  {% endfor %}
+  {% if page.has_next %}<a href="{% url_replace page=page.next_page_number %}" rel="next">{% trans "Next" %} &rarr;</a>{% endif %}
+</nav>
+{% endif %}

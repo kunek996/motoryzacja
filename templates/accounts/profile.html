@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{{ member.display_name }}{% endblock %}
+{% block content %}
+<div class="card profile-head">
+  <span class="avatar lg">{{ member.display_name|slice:":1" }}</span>
+  <div>
+    <h1 style="margin:0">{{ member.display_name }}</h1>
+    {% if member.bio %}<p style="margin:.2rem 0">{{ member.bio }}</p>{% endif %}
+    <span class="muted small">{% trans "Member since" %} {{ member.date_joined|date:"F Y" }}</span>
+  </div>
+  <div class="nums">
+    <div><b>{{ entry_count }}</b><span>{% trans "entries" %}</span></div>
+    <div><b>{{ reputation }}</b><span>{% trans "helpful votes" %}</span></div>
+  </div>
+</div>
+<h2>{% trans "Entries" %}</h2>
+<div class="grid">
+  {% for e in page %}{% include "catalog/_card.html" %}{% empty %}<p class="muted">{% trans "No entries yet." %}</p>{% endfor %}
+</div>
+{% include "_pagination.html" %}
+{% endblock %}

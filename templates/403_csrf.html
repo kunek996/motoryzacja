@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% trans "Session expired" %}{% endblock %}
+{% block content %}
+<div class="error-page">
+  <div class="code">403</div>
+  <h1>{% trans "Session expired" %}</h1>
+  <p class="muted">{% trans "For your security the form could not be submitted. Go back, refresh the page and try again." %}</p>
+  <a class="btn" href="{% url 'core:landing' %}">{% trans "Home" %}</a>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% trans "Log in" %}{% endblock %}
+{% block content %}
+<div class="card narrow">
+  <h1>{% trans "Log in" %}</h1>
+  <form method="post" class="form">{% csrf_token %}
+    {% if form.non_field_errors %}<ul class="errorlist nonfield">{% for e in form.non_field_errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+    <div>{{ form.username.label_tag }}{{ form.username }}{{ form.username.errors }}</div>
+    <div>{{ form.password.label_tag }}{{ form.password }}{{ form.password.errors }}</div>
+    <input type="hidden" name="next" value="{{ next }}">
+    <button style="width:100%">{% trans "Log in" %}</button>
+  </form>
+  <p style="margin-top:1rem"><a href="{% url 'accounts:password_reset' %}">{% trans "Forgot your password?" %}</a><br>
+  <a href="{% url 'accounts:resend_verification' %}">{% trans "Didn't get the confirmation email?" %}</a></p>
+  <p class="muted">{% trans "New here?" %} <a href="{% url 'accounts:signup' %}">{% trans "Create account" %}</a></p>
+</div>
+{% endblock %}

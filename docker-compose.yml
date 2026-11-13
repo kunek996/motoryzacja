@@ -1,0 +1,44 @@
+# Production-like stack for local testing or a single VPS:
+#   cp .env.example .env.production   (fill in values, DEBUG=False)
+#   docker compose up --build
+# Put a TLS-terminating reverse proxy (Caddy, Traefik, nginx) in front of "web" in production.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: tunehub
+      POSTGRES_USER: tunehub
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in your shell or .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tunehub"]
+      interval: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+
+  web:
+    build: .
+    env_file: .env.production
+    environment:
+      DATABASE_URL: postgres://tunehub:${POSTGRES_PASSWORD}@db:5432/tunehub
+      REDIS_URL: redis://redis:6379/0
+      RATELIMIT_PROXY_COUNT: "1"
+    volumes:
+      - media:/data
+    ports:
+      # Loopback only: the app trusts X-Forwarded-For / X-Forwarded-Proto from ONE proxy, so it must
+      # never be reachable directly from the internet. Your reverse proxy on this host connects here.
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+volumes:
+  pgdata:
+  media:
